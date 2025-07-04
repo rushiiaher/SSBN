@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -58,29 +59,31 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: "1240px" }}>
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.03, rotate: 0.5 }}
-            transition={{ duration: 0.267, ease: [0.43, 0.195, 0.02, 1.01] }}
-            className="flex items-center space-x-3"
-          >
-            <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16">
-              <Image
-                src="/imgs/logo.jpg"
-                alt="Sadhana Sahakari Bank Logo"
-                width={64}
-                height={64}
-                className="rounded-lg"
-              />
-            </div>
-            <div className="hidden sm:block">
-              <div className="font-bold text-[#141414] text-base sm:text-lg">
-                SSB Ltd
+          <Link href="/">
+            <motion.div
+              whileHover={{ scale: 1.03, rotate: 0.5 }}
+              transition={{ duration: 0.267, ease: [0.43, 0.195, 0.02, 1.01] }}
+              className="flex items-center space-x-3 cursor-pointer"
+            >
+              <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16">
+                <Image
+                  src="/imgs/logo.jpg"
+                  alt="Sadhana Sahakari Bank Logo"
+                  width={64}
+                  height={64}
+                  className="rounded-lg"
+                />
               </div>
-              <div className="text-[#7d7d7d] text-xs">
-                Since 1984
+              <div className="hidden sm:block">
+                <div className="font-bold text-[#141414] text-base sm:text-lg">
+                  SSB Ltd
+                </div>
+                <div className="text-[#7d7d7d] text-xs">
+                  Since 1984
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -167,21 +170,23 @@ export default function Navigation() {
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 flex items-center justify-center">
-                      <Image
-                        src="/imgs/logo.jpg"
-                        alt="Sadhana Sahakari Bank Logo"
-                        width={48}
-                        height={48}
-                        className="rounded-lg"
-                      />
+                  <Link href="/" onClick={() => setIsOpen(false)}>
+                    <div className="flex items-center space-x-3 cursor-pointer">
+                      <div className="w-12 h-12 flex items-center justify-center">
+                        <Image
+                          src="/imgs/logo.jpg"
+                          alt="Sadhana Sahakari Bank Logo"
+                          width={48}
+                          height={48}
+                          className="rounded-lg"
+                        />
+                      </div>
+                      <div>
+                        <div className="font-bold text-[#141414] text-lg">SSB Ltd</div>
+                        <div className="text-[#7d7d7d] text-xs">Since 1984</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-bold text-[#141414] text-lg">SSB Ltd</div>
-                      <div className="text-[#7d7d7d] text-xs">Since 1984</div>
-                    </div>
-                  </div>
+                  </Link>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="p-2 text-[#7d7d7d] hover:text-[#141414] transition-colors"
